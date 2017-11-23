@@ -2,7 +2,8 @@
 
 ```js
 // Declarar uma variável qualquer, que receba um objeto vazio.
-?
+var obj = {}
+console.log(typeOf(obj))
 
 /*
 Declarar uma variável `pessoa`, que receba suas informações pessoais.
