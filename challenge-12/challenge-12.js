@@ -1,4 +1,49 @@
 /*
+// Notas
+// Criação de objetos → são mutáveis e manipulado por refe.
+var obj = { prop1: 'valor1', prop2: 'valor2'};
+delete(obj.prop1);
+console.log(obj);
+
+var obj = { prop1: 'valor1', prop2: 'valor2'};
+var obj2 = Object.create(obj);
+console.log(obj2.prop2); //referencia, herda as props do obj
+var obj2 = Object.create({}); //objeto vazio
+console.log(obj2);
+
+// Methods
+var obj = { prop1: 'valor1', prop2: 'valor2'};
+var obj2 = { prop3: 'valor1', prop4: 'valor2'};
+console.log(Object.keys(obj2));
+
+obj = obj2;
+obj2 = obj;
+// isPrototypeOf
+console.log(obj.isPrototypeOf(obj2));
+console.log(obj2.isPrototypeOf(obj));
+
+// JSON.stringify
+console.log(JSON.stringify(obj));
+var str = JSON.stringify(obj);
+console.log(str);
+// JSON.parse
+console.log(JSON.parse(str));
+
+// add items array
+var arr = [];
+arr[0] = 10;
+arr.push('asa');
+arr.pop()
+var arr2 = ['1','2','3'];
+console.log(arr2.join(' '));
+console.log(arr2.reverse());
+var arr3 = ['acaraje', 'sorvete', 'manga'];
+console.log(arr3.sort());
+
+console.log('----------------------------------');
+*/
+
+/*
 Envolva todo o conteúdo desse arquivo em uma IIFE.
 */
 
