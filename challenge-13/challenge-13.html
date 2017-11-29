@@ -1,68 +1,15 @@
-// Notas arrays
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
 
-// Notas arrays
-var array1 = [1,2,3,4,5,6];
-console.log(array1.push(7)); //tira fim
-console.log(array1.length);
-console.log(array1.toString());
-console.log(array1.join('-'));
-console.log(array1.concat(8));
-console.log(array1.concat([9,10,11]));
-console.log(array1.concat([9,10,11],[12,13,14]));
-console.log(array1.unshift(0));//add inicio
-console.log(array1);
-console.log(array1.shift());//tira inicio
-console.log(array1);
-console.log('-------------------------------');
-// slice
-var array1 = [1,2,3,4,5,6];
-console.log(array1.slice(1,3)); //[2,3] não mostra o ultimo index(index, até...)
-console.log(array1.splice(3)); //[4,5,6]
-console.log(array1.splice(1,3)); //remove e modifica (index, qtde items)
-console.log(array1.splice(2,0,'a','b'));
-console.log(array1);
-
-console.log('-------------------------------');
-
-// forEach
-var array = [1,2,3,4,5,6];
-array.forEach(function(item, index, array){
-  console.log(item, index, array);
-});
-
-var sum = 0
-array.forEach(function(item){
-  console.log(sum += item);
-});
-
-// every() - todos precisam ser true
-var every = array.every(function(item){
-  return item < 7;
-});
-console.log('every: ', every);
-
-// some - ao menos um precisa ser true
-var some = array.some(function(item){
-  return item % 2 === 0;
-});
-console.log('some: ', some);
+    <script type="text/javascript">
 
 
-// map - retorna um array
-var map = array.map(function(item, index, array){
-  // return item + 1;
-  return {index: index, item: item};
-});
-console.log('Map: ', map);
-
-// filter
-var filter = array.filter(function(item, index, array){
-  return item > 3;
-
-});
-console.log('Filter: ', filter);
-console.log('-------------------------------');
-
+(function(){
 
 /*
 Envolva todo o código desse desafio em uma IIFE.
@@ -72,80 +19,95 @@ Envolva todo o código desse desafio em uma IIFE.
 Crie um array e mostre no console a representação em String desse array,
 usando o método visto na aula 13.
 */
-console.log( 'O array em formato de string é:' );
+var theArray = [1,2,3,4,5,6,7,8,9];
+var str = theArray.toString();
+console.log( 'O array em formato de string é:', str );
 // ?
 
 /*
 Crie 2 arrays `sul` e `sudeste`, que serão as regiões do Brasil.
 Cada array deve conter os estados dessa região.
 */
-// ?
+var sul = ['Rio Grande do Sul', 'Paraná', 'Santa Catarina'];
+var sudeste = ['São Paulo', 'Rio de Janeiro', 'Esp. Santo', 'Minas Gerais']
 
 /*
 Crie uma variável chamada `brasil`, que irá receber as duas regiões
 concatenadas. Mostre o `brasil` no console.
 */
 console.log( '\nAlguns Estados do Brasil:' );
-// ?
+var brasil=[];
+var brasil = sul.concat(sudeste);
+console.log(brasil);
 
 /*
 Adicione 3 novos estados da região Norte no início do array e mostre no console.
 */
 console.log( '\nMais estados adicionados:' );
-// ?
+// var norte =['Roraima', 'Acre', 'Amazonas'];
+brasil.unshift('Roraima','Acre','Amazonas');
+console.log(brasil);
 
 /*
 Remova o primeiro estado do array `brasil` e mostre-o no console.
 */
 console.log( '\nEstado removido:' );
-// ?
+var remov = brasil.shift();
+console.log(remov);
+
+
 
 /*
 Crie um novo array chamado `newSul`, que receba somente os estados do sul,
 pegando do array `brasil`. Não remova esses itens de `brasil`.
 */
-// ?
+var newSul = [];
+var newSul = brasil.slice(2,5);
+console.log(newSul.push());
 
 /*
 Mostre no console os estados que estão em `newSul`.
 */
 console.log( '\nEstados do Sul do Brasil:' );
-// ?
+console.log(newSul);
 
 /*
 Mostre no console todos os estados que estão em `brasil`.
 */
 console.log( '\nAlguns Estados do Brasil:' );
-// ?
+console.log(brasil);
 
 /*
 Crie um novo array chamado `nordeste`, que tenha os estados do nordeste.
 */
-// ?
+var nordeste = ['Alagoas', 'Bahia', 'Ceará', 'Maranhão', 'Paraíba', 'Piauí', 'Pernambuco', 'Rio Grande do Norte', 'Sergipe'];
 
 /*
 Mostre no console os estados do nordeste.
 */
 console.log( '\nEstados do Nordeste:' );
-// ?
+console.log(nordeste);
 
 /*
 Remova de `brasil` os estados do `sudeste`, colocando-os em uma variável
 chamada `newSudeste`.
 */
-// ?
+// console.log(brasil);
+var remSud = brasil.splice(5,4);
+console.log(remSud);
 
 /*
 Adicione os estados do `nordeste` ao array `brasil`. Esses estados devem
 ficar no mesmo nível que os estados já existentes, não em um array separado.
 */
-// ?
+var addNord = brasil.concat(nordeste)
+console.log(addNord);
 
 /*
 Mostre no console os estados em `newSudeste`.
 */
 console.log( '\nEstados em newSudeste:' );
-// ?
+console.log(sudeste);
 
 /*
 Mostre no console os estados do `brasil`.
@@ -160,13 +122,20 @@ propriedades:
 - `id`: que será o índice do array `brasil`,
 - `estado`: que será o estado do array `brasil`.
 */
-// ?
+var newBrasil = [];
+brasil.forEach(function(item, index, array){
+  newBrasil.push({
+    id:index,
+    estado:item
+  })
+});
+
 
 /*
 Mostre o array `newBrasil` no console
 */
-console.log( '\nnewBrasil:' );
-// ?
+console.log( '\nnewBrasil:');
+console.log(newBrasil);
 
 /*
 Percorra o array `brasil` e verifique se os estados tem mais de 7 letras cada,
@@ -175,8 +144,15 @@ atribuindo o resultado à uma variável. Se tiver, mostre no console a frase:
 Senão, mostre no console:
 - "Nem todos os estados tem mais de 7 letras!"
 */
-console.log( '\nTodos os estados de `brasil` tem mais de 7 letras?' );
-// ?
+console.log(brasil);
+console.log( '\nR:Todos os estados de `brasil` tem mais de 7 letras?' );
+var leng = brasil.length;
+
+var every = brasil.every(function(item){
+  return item.length > 7;
+});
+console.log(every  ? "Sim, todos os estados tem mais de 7 letras!":"Nem todos os estados tem mais de 7 letras!" );
+
 
 /*
 Percorra o array `brasil` e verifique se o Ceará está incluído, atribuindo o
@@ -187,7 +163,10 @@ Senão, mostrar a frase:
 - "Ceará não foi incluído :("
 */
 console.log( '\nCeará está incluído em `brasil`?' );
-// ?
+var some = brasil.some(function(item){
+  return item === 'Ceará';
+});
+console.log(some ? 'Ceará está incluído!' : 'Ceará não foi incluído :(');
 
 /*
 Percorra o array `newBrasil` e crie um novo array que some 1 no ID de cada
@@ -195,22 +174,36 @@ objeto desse array, e adicione a frase abaixo na propriedade `estado`:
 - "[ESTADO] pertence ao Brasil."
 Atribua o novo array a uma variável chamada `map`.
 */
-// ?
+var map = newBrasil.map(function(item, index, array){
+  item.id++;
+  item.estado += ' pertence ao Brasil';
+  return item;
+});
+console.log('Map: ', map);
+
 
 /*
 Mostre no console o array criado acima:
 */
 console.log( '\nnewBrasil agora com mais informações:' );
-// ?
+console.log(map);
 
 /*
 Filtre o array criado acima, retornando somente os estados que tiverem
 ID par. Atribua o valor à uma variável chamada `filter`.
 */
-// ?
+var filter = map.filter(function(item, index){
+  return item.id % 2 === 0;
+});
+console.log('Filter: ', filter);
 
 /*
 Mostre o array filtrado acima no console.
 */
 console.log( '\nEstados com ID par:' );
 // ?
+})();
+
+</script>
+</body>
+</html>
