@@ -58,7 +58,6 @@ console.log('Map: ', map);
 // filter
 var filter = array.filter(function(item, index, array){
   return item > 3;
-
 });
 console.log('Filter: ', filter);
 console.log('-------------------------------');
