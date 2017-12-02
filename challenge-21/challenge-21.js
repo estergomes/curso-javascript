@@ -1,3 +1,53 @@
+// notas
+setTimeout(function(){
+ console.log('executou setTimeout');
+},1000);
+
+setInterval(function(){
+  console.log('executou setTimeout');
+},1000);
+
+var counter = 0;
+function timer() {
+  console.log('timer: '+ counter++);
+
+  if(counter === 10)
+    return;
+  setTimeout(timer,1000);
+}
+timer();
+
+// → use o setTimeout
+
+//------------------------------------------------
+//data-js → para arquivos js e. class para css
+/* <button data-js="">Parar Crono.</button> */
+
+var $button = document.querySelector('[data-js="button]');
+var temporizador;
+var counter = 0;
+function timer() {
+  console.log('timer: '+ counter++);
+
+  if(counter === 10)
+    return;
+  temporizador = setTimeout(timer,1000);
+}
+timer();
+
+// parar evento
+$button.addEventListener('click',function(){
+  clearTimeout(temporizador);
+},false);
+
+// setInterval → clearInterval
+// setTimeout  → clearTimeout
+
+//------------------------------------------------
+
+
+
+
 /*
 O desafio de hoje será um pequeno projeto: um cronômetro!
 As regras para criação do cronômetro são as seguintes:
