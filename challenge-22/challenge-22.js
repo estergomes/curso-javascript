@@ -2,15 +2,60 @@
   // metodos function
 
   function myFunction(a,b,c,d){
+    console.log(this.lastName);
     return 'oi';
   }
 
-  var obj = {prop1:1, prop2:2};
+  var obj = {
+    lastName:'blabla',
+    prop1:1,
+    prop2:2
+  };
 
-  myFunction.name;
+  var arr = [1,2,3];
+
+  console.log(myFunction.length); // qtde parametros (a,b,c,d)
+  console.log(myFunction.name);
   // toString
   console.log(myFunction.toString());
-  console.log(myFunction.call());
+  console.log(myFunction.call(this)); // this → obj
+
+  // array como para parametros da função
+  console.log('Apply: ' +myFunction.apply(obj, arr));
+
+  // prototype
+  function myFunction2(name, lastName){
+    this.name = name;
+    this.lastName=lastName;
+  }
+  myFunction2.prototype.fullName = function(){
+    return this.name +' '+this.lastName;
+  }
+  // add property
+  myFunction2.prototype.age = 30;
+
+  var ester = new myFunction2('Ester', 'Gomes');
+  console.log('Full name: '+ester.fullName());
+
+  // Array-like prototype
+  function myFunction3(){
+    var arr = [1,2,3,4];
+    arr.forEach(function(item, index){
+      console.log(this);
+    }, arguments);
+  }
+  console.log(myFunction3(1,2,3,4,5,6));
+
+
+
+
+
+
+
+
+
+
+
 
   /*
   Crie dois objetos, que serão duas pessoas. Cada um deve ter as propriedades
