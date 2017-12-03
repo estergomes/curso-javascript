@@ -34,6 +34,7 @@ usar o nome que achar melhor, desde que ele seja semântico, ou seja, o nome
 dado ao elemento HTML deve definir o que o elemento é ou o que ele faz.
 */
 // ?
+console.time();
 
 var $timer = doc.querySelector('[data-js="timer"]');
 var $start = doc.querySelector('[data-js="start"]');
@@ -60,7 +61,7 @@ function resetTimer(){
   $timer.value = 0;
   stopTimer();
 }
-
+console.timeEnd();
 })(window, document);
 </script>
 </body>

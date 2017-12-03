@@ -1,5 +1,9 @@
+(function(win, doc){
+// tempo de execução
+// console.time();
+// console.timeEnd()
 
-
+// console.table();
 
 /*
 Vamos desenvolver mais um projeto. A ideia é fazer uma mini-calculadora.
@@ -26,3 +30,76 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+
+// get html ui info
+var $visor = doc.querySelector('[data-js="visor"]');
+var $buttonsNumbers = doc.querySelectorAll('[data-js="button-number"]');
+var $buttonOperations = doc.querySelectorAll('[data-js="button-operation"]');
+var $buttonCE = doc.querySelector('[data-js="button-ce"]');
+
+
+// eventos
+$buttonsNumbers.forEach(function(button){
+  button.addEventListener('click', handleClickNumber,false);
+});
+Array.prototype.forEach.call($buttonOperations, function(button){
+  button.addEventListener('click', handleClickOperation, false);
+});
+$buttonCE.addEventListener('click', handleClickCE, false);
+
+
+// functions
+function handleClickNumber(){
+  $visor.value += this.value;
+}
+
+function handleClickOperation(){
+  if(isLastItemAnOperation(operations)) {
+    $visor.value = $visor.value.slice(0,-1);
+  }
+  $visor.value += this.value;
+}
+
+function handleClickCE(){
+  $visor.value = 0;
+}
+
+function isLastItemAnOperation(){
+  var operations = ['+','-','*','/'];
+  var lastItem = $visor.value.split('').pop();
+  return operations.some(function(operator){
+    return operator === lastItem;
+  })
+  console.log(lastItem);
+}
+
+function removeLastItemIfIsAnOperator(){
+  if(isLastItemOperation()){
+    $visor.value = $visor.value.slice(0,-1);
+  }
+}
+
+function handleClickEqual(){
+  removeLastItemIfIsAnOperator();
+  console.log($visor.value.split(/[\d]/));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})(window, document);
