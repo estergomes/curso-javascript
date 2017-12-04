@@ -1,5 +1,5 @@
 (function(win, doc){
-
+'use strict'
 /*
 Nossa calculadora agora está funcional! A ideia desse desafio é modularizar
 o código, conforme vimos na aula anterior. Quebrar as responsabilidades
@@ -18,7 +18,7 @@ var $buttonCE = document.querySelector('[data-js="button-ce"]');
 var $buttonEqual = document.querySelector('[data-js="button-equal"]');
 
 function initialize(){
-  initVariables();
+  initEvents();
 }
 
 function initEvents(){
@@ -53,6 +53,12 @@ function isLastItemAnOperation(number) {
   });
 }
 
+function getOperations(){
+  return Array.prototype.map.call($buttonsOperations, function(button){
+    return button.value;
+  });
+}
+
 function removeLastItemIfItIsAnOperator(string) {
   if(isLastItemAnOperation(string)) {
     return string.slice(0, -1);
@@ -62,17 +68,28 @@ function removeLastItemIfItIsAnOperator(string) {
 
 function handleClickEqual() {
   $visor.value = removeLastItemIfItIsAnOperator($visor.value);
-  var allValues = $visor.value.match(/\d+[+x÷-]?/g);
+  var regexOperations;
+  var allValues = $visor.value.match(getRegexOperations());
   $visor.value = allValues.reduce(calculateAllValues);
+}
+
+function getRegexOperations(){
+  return new RegExp('\\d+[' + getOperations().join('') + ']?', 'g');
 }
 
 function calculateAllValues(accumulated, actual) {
   var firstValue = accumulated.slice(0, -1);
   var operator = accumulated.split('').pop();
   var lastValue = removeLastItemIfItIsAnOperator(actual);
-  var lastOperator = isLastItemAnOperation(actual) ? actual.split('').pop() : '';
+  var lastOperator = getLastOperator(actual);
   return doOperation(operator, firstValue, lastValue) + lastOperator;
 }
+
+function getLastOperator(value){
+  return isLastItemAnOperation(value) ? value.split('').pop() : '';
+}
+
+
 
 function doOperation(operator, firstValue, lastValue){
   switch(operator) {
