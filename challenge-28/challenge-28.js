@@ -1,3 +1,83 @@
+(function(){
+  'use strict'
+  function DOM(elements){
+    this.element = document.querySelectorAll(elements);
+  }
+
+  // criando methods
+  DOM.prototype.on = function on(eventType, callback){
+    Array.prototype.forEach.call(this.element, function(element){
+      element.addEventListener(eventType, callback, false);
+    });
+  };
+
+  DOM.prototype.off = function off(){
+    Array.prototype.forEach.call(this.element, function(element){
+      element.removeEventListener(eventType, callback, false);
+    });
+  };
+
+  DOM.prototype.get = function get(){
+    return this.element;
+  };
+
+  DOM.prototype.forEach = function forEach(){
+    return Array.prototype.forEach.apply(this.element, arguments);
+  }
+
+  DOM.prototype.map = function map(){
+    return Array.prototype.map.apply(this.element, arguments);
+  }
+
+  DOM.prototype.filter = function filter(){
+    return Array.prototype.filter.apply(this.element, arguments);
+  }
+
+  DOM.prototype.reduce = function reduce(){
+    return Array.prototype.reduce.apply(this.element, arguments);
+  }
+
+  DOM.prototype.reduceRight = function reduceRight(){
+    return Array.prototype.reduceRight.apply(this.element, arguments);
+  }
+
+  DOM.prototype.every = function every(){
+    return Array.prototype.every.apply(this.element, arguments);
+  }
+
+  DOM.prototype.some = function some(){
+    return Array.prototype.some.apply(this.element, arguments);
+  }
+
+  DOM.prototype.isArray = function isArray(param){
+    return Object.prototype.toString.call(param) === '[object Array]';
+  }
+
+  var $formCep = new DOM('[data-js="form-cep"]');
+  var $inputCep = new DOM('[data-js="input-cep"]');
+  var ajax = new XMLHttpRequest();
+  $formCep.on('submit', handleSubmitFormCEP);
+
+  function handleSubmitFormCEP(event){
+    event.preventDefault();
+    console.log('submit form');
+    var url = 'https://viacep.com.br/ws/[CEP].json'.replace('[CEP]', $inputCep.get()[0].value)
+    ajax.open('GET', url);
+    ajax.send();
+    ajax.addEventListener('readystatechange', handleReadyStateChange);
+  }
+
+  function handleReadyStateChange(){
+    if(ajax.readyState === 4 && ajax.status === 200) {
+      console.log('Popular form', ajax.responseText);
+    }
+    console.log('Carregando...');
+  }
+
+  console.log($formCep);
+
+
+
   /*
   No HTML:
   - Crie um formulário com um input de texto que receberá um CEP e um botão
@@ -25,3 +105,4 @@
   - Utilize a lib DOM criada anteriormente para facilitar a manipulação e
   adicionar as informações em tela.
   */
+})();

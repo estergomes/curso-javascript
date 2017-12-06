@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="main">
+    main content
+  </div>
+  <div class="section">
+    section 1
+  </div>
+  <script>
+  (function(){
+
+  // Notes
+  var fragment = document.createDocumentFragment();
+  var childP = document.createElement('p');
+  var textChildP = document.createTextNode('Texto da tag P');
+
+  childP.appendChild(textChildP);
+  fragment.appendChild(childP);
+  document.body.appendChild(fragment);
+
+
+  //copiar arrays
+  var arr = [1,2,3,4,5];
+  var arr2 = arr; //referencia
+  arr2 = arr.map(function(item){
+    return item;
+  });
+  // outro jeito
+  arr3 = arr.slice(0);
+  console.log(arr, arr2, arr3, arr === arr2);
+
+  var $divs = document.querySelectorAll('div');
+  var $divsCopy = Array.prototype.slice.call($divs);
+  console.log($divs,  $divsCopy);
+
+  // tipo de dado real
+  console.log([1,2,3].toString());
+  console.log({prop1: 1, prop2: 2}.toString());
+  console.log(Object.prototype.toString.call(arr)); //typeof só para primitivos
+  function is(obj){
+    console.log(Object.prototype.toString.call(obj));
+  }
+  is();
+
+  function isArray(obj){
+    return is(obj) === '[object Array]';
+  }
+  isArray([1,2,3]);
+
+
+
+
+
+  })();
+  </script>
+</body>
+</html>
