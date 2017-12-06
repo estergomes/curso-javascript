@@ -92,6 +92,6 @@
     }
 
   }
-  app().init();
+  app();
 
 })(window.DOM);
