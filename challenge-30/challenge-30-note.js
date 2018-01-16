@@ -94,8 +94,23 @@ Math.floor(10.2) // arredonda pra baixo
 
 
 
-// AJAX
+// AJAX & REST API
+// → nodemon index.js - sobe server
+// →cd  npm install --save express
 
+'use strict';
 
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res){
+  res.send('<h1> Home </h1>');
+});
+
+app.get('/user', function(req, res){
+  res.send('User');
+});
+
+app.listen(3000);
 
 })();
