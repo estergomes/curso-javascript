@@ -16,16 +16,20 @@ resultado à uma variável chamada `username`. Se o usuário não digitar um
 nome, `username` deve receber "Desconhecido".
 Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
 */
+
+// ↓↓↓↓↓↓ RESPOSTAS ↓↓↓↓↓↓
+
 // method 1
-// var username = prompt("Qual o seu nome?");
-// if(!username){
-//   alert('Desconhecido');
-// } else {
-//   alert('Bem vindo'+ username);
-// }
+/*
+var username = prompt("Qual o seu nome?");
+if(!username){
+  alert('Desconhecido');
+} else {
+  alert('Bem vindo'+ username);
+}
+*/
 
-// method 2
-
+// method 2 - curto circuito
 var username = prompt('Qual o seu nome?') || 'Desconhecido';
 alert('Bem vindo(a)! '+ username);
 
@@ -34,7 +38,7 @@ alert('Bem vindo(a)! '+ username);
 Agora, pergunte ao usuário "Qual o seu e-mail?", atribuindo o resultado à
 uma variável chamada `email`.
 */
-var email = prompt("Qual o seu e-mail?",'Digite seu email');
+var email = prompt("Qual o seu e-mail?", 'Digite seu email');
 
 
 /*
