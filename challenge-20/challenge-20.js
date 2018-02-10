@@ -1,26 +1,3 @@
-/*
-$inputs = document.getElementsByTagName('input')
-// (2) [input, input]
-$inputs.length
-// 2
-$inputs = document.querySelectorAll('input')
-// (2) [input, input]
-$inputs = document.querySelectorAll('[type=text]')
-
-var $inputUsername = document.querySelector('#username');
-
-// addEventListener
-var $button = document.querySelector('#button');
-$button.addEventListener('click', function(event){
-  event.preventDefault();
-  console.log('Click button')
-}, false);
-
-$inputUsername.addEventListener('click', function(){
-  alert('input click');
-}, false);
-*/
-
 (function(win, doc){
   'use strict'
 /*
@@ -50,10 +27,7 @@ Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
 // method 2
 
 var username = prompt('Qual o seu nome?') || 'Desconhecido';
-alert('BEm vindo '+ username);
-
-
-
+alert('Bem vindo(a)! '+ username);
 
 
 /*
