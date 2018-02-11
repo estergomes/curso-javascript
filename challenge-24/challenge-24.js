@@ -1,5 +1,5 @@
 (function(win, doc){
-'use strict'
+'use strict';
 /*
 Nossa calculadora agora está funcional! A ideia desse desafio é modularizar
 o código, conforme vimos na aula anterior. Quebrar as responsabilidades
