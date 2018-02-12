@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<body>
+<body  onclick="console.log('fire/trigger attribute event handler')">
 
   <!-- <a href="javascript:void(0)">Click</a> -->
   <!-- <a href="javascript:void(0)" onclick="boom()">Click</a> -->
@@ -19,6 +19,8 @@
     </a>
   </div>
 
+  <div>click me</div>
+
   <input type="text" data-js="input">
   <select data-js="select">
     <option value="1">1</option>
@@ -27,86 +29,6 @@
   </select>
 
   <script>
-    // notas
-    /* Não Usar */
-    // <a href="javascript:void(0)">Click</a> → não retorna nada.
-    // function inline
-    // false no final → inverte a ordem do evento. child to div
-
-
-
-    // criar eventos
-    /*
-    var $a = document.querySelector('[data-js="link"]');
-    var $div = document.querySelector('[data-js="div"]').addEventListener('click', function(event){
-      alert('clicou no a');
-    }, false);
-
-
-    $a.addEventListener('click', function(event){
-      event.preventDefault();
-      alert('clicou no a');
-    }, false);
-*/
-
-
-  //substitui eventos acima com função externa base
-  // use para codigos que se repetem
-  //eventos cumulativos, fila de eventos
-
-  function on(element, event, callback){
-    document.querySelector(element)
-      .addEventListener(event, callback, false);
-  }
-   /*
-  // remover event
-  function off(element, event, callback){
-    document.querySelector(element)
-      .removeEventListener(event, callback, false);
-  }
-  //posso tirar a funcao do evento e por externa
-  function handleClick(){
-    event.preventDefault();
-    alert('clicou na div');
-  };
-  //funcao externa
-  on('[data-js="div"]', click, handleClick);
-  off('[data-js="div"]', click, handleClick);
-
-  // função interna
-  on('[data-js="link"]', 'click', function(event){
-    event.preventDefault();
-    alert('clicou no a');
-  });
-  on('[data-js="span"]', 'click', function(){
-    alert('clicou no span');
-  });
-  */
-
-
-  // outra forma de add adventListeners.
-  //sobreescrever eventos
-  /*
-    var $a = document.querySelector('[data-js="link"]');
-    $a.onclick = function(event){
-      event.preventDefault();
-      alert('clicou no a diferente');
-    }
-    //esse segundo evento sobreescreve o primeiro
-    $a.onclick = function(event){
-      event.preventDefault();
-      alert('clicou ')
-    }
-    */
-
-    // outros eventos - 'keyup', 'keydown',
-    on('[data-js="input"]', 'input', function(event){
-      console.log(this.value);
-    });
-    // select
-    on('[data-js="select"]', 'change', function(){
-      document.querySelector('[data-js="input"]').value = this.value;
-    });
 
 /*
 Essa semana você terá dois desafios:
