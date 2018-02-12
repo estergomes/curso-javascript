@@ -33,7 +33,7 @@ DOM.prototype.on = function on(eventType, callback){
   });
 };
 
-DOM.prototype.off = function off(){
+DOM.prototype.off = function off(eventType, callback){
   Array.prototype.forEach.call(this.element, function(element){
     element.removeEventListener(eventType, callback, false);
   });
